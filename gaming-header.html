@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holm Gaming header</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/gaming-hud.css">
+  <style>
+    html, body { margin: 0; width: 100%; height: 100%; }
+    body { background: #6ca8d4 url('bg/screen-A.png') 0 0 / 100% 100% no-repeat; image-rendering: pixelated; }
+  </style>
+</head>
+<body>
+  <header class="hud" id="hud">
+    <a class="hud-logo" href="index.html" aria-label="Holm">Holm</a>
+    <nav class="hud-nav" aria-label="Main">
+      <a href="index.html">Holm</a>
+      <a href="gaming.html" aria-current="page">Gaming</a>
+      <a href="work.html">Work</a>
+      <a href="premium.html">Premium</a>
+      <a href="info.html">Info</a>
+    </nav>
+    <div class="hud-stats">
+      <div class="hud-stat" title="Coins"><i class="hud-coin"></i><b id="coin-count">&times;00</b></div>
+      <div class="hud-stat" title="Secrets"><i class="hud-secret"></i><b id="secret-count">0/2</b></div>
+    </div>
+    <div class="hud-tools">
+      <button id="sound-toggle" type="button" aria-pressed="true">Sound</button>
+      <button id="motion-toggle" type="button" aria-pressed="true">Motion</button>
+      <button id="cart-btn" type="button">Cart<b id="cart-count">0</b></button>
+      <button id="restart-btn" class="hud-restart" type="button"><span class="en">Restart</span><span class="jp">最初から</span></button>
+    </div>
+  </header>
+</body>
+</html>

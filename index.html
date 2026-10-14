@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>digital-shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,600;1,500&family=Shippori+Mincho:wght@500;700&family=Yuji+Syuku&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <a class="logo" href="index.html" aria-label="DIGITAL.SHOP"><img class="logo-a" src="assets/img/ui/t-logo.webp" alt="DIGITAL.SHOP"><img class="logo-b" src="assets/img/ui/t-logo.webp" alt="" aria-hidden="true"></a>
+    <div class="links">
+      <a href="index.html" class="on">Holm</a>
+      <a href="./gaming.html">Gaming</a>
+      <a href="work.html">Work</a>
+      <a href="premium.html">Premium</a>
+      <a href="info.html">Info</a>
+    </div>
+    <div class="tools">
+      <button id="sound-toggle" class="plain" title="Звук">Sound</button>
+      <button id="motion-toggle" class="plain" title="Выключить анимации">Motion</button>
+      <button id="cart-btn" class="cart">Cart <b id="cart-count">0</b></button>
+    </div>
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="tide" id="tide">
+      <img class="tide-img" src="assets/img/surf-00.webp" alt="">
+      <img class="tide-img" src="assets/img/surf-01.webp" alt="">
+      <img class="tide-img" src="assets/img/surf-02.webp" alt="">
+      <img class="tide-img" src="assets/img/surf-03.webp" alt="">
+      <img class="tide-img" src="assets/img/surf-04.webp" alt="">
+      <img class="tide-img" src="assets/img/surf-05.webp" alt="">
+      <img class="tide-img" src="assets/img/surf-06.webp" alt="">
+      <img class="tide-img" src="assets/img/surf-07.webp" alt="">
+      <img class="tide-img" src="assets/img/surf-08.webp" alt="">
+      <img class="tide-img" src="assets/img/surf-09.webp" alt="">
+    </div>
+    <div class="hero-text">
+      
+      <h1 id="hero-title">温故知新</h1>
+      <p id="hero-desc">故きを温ねて新しきを知る</p>
+      <span class="hero-tag">Technology from across the sea</span>
+    </div>
+    <div class="scroll-hint">Scroll<span></span></div>
+  </header>
+
+  <main id="journey">
+    <div class="stage-wrap" id="stage-wrap">
+      <div class="stage" id="stage"></div>
+      <canvas id="fx"></canvas>
+      <div class="flash" id="flash"></div>
+      <button class="hud-product" id="hud-product" type="button">
+        <span class="hud-jp" id="hud-jp"></span>
+        <span class="hud-en" id="hud-en"></span>
+        <span class="hud-name" id="hud-name"></span>
+      </button>
+      <div class="hud-count"><b id="hud-num">01</b><span>/ 11</span></div>
+    </div>
+  </main>
+
+  <footer class="footer" id="footer">
+    <img class="footer-bg" src="assets/img/footer-beach.webp" alt="">
+    <div class="footer-body">
+      <div class="footer-jp">またね</div>
+      <div class="footer-links">
+        <a href="index.html" aria-label="Holm"><img class="fl" style="--w:124px" src="assets/img/ui/t-holm.webp" alt="Holm"></a><a href="gaming.html" aria-label="Gaming"><img class="fl" style="--w:150px" src="assets/img/ui/t-gaming.webp" alt="Gaming"></a><a href="work.html" aria-label="Work"><img class="fl" style="--w:146px" src="assets/img/ui/t-work.webp" alt="Work"></a><a href="premium.html" aria-label="Premium"><img class="fl" style="--w:190px" src="assets/img/ui/t-premium.webp" alt="Premium"></a><a href="info.html" aria-label="Info"><img class="fl" style="--w:84px" src="assets/img/ui/t-info.webp" alt="Info"></a>
+      </div>
+      <p>digital-shop. Exam project.</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close" type="button">Close</button>
+      <div class="modal-view">
+        <div class="lamps" aria-hidden="true">
+          <img class="beam" src="assets/img/ui/beam.webp" alt="">
+          <div class="lamp" style="--x:28%"><i class="glow"></i><img src="assets/img/ui/chochin.webp" alt=""></div>
+          <div class="lamp" style="--x:72%"><i class="glow"></i><img src="assets/img/ui/chochin.webp" alt=""></div>
+        </div>
+        <model-viewer id="modal-model" camera-controls auto-rotate rotation-per-second="18deg" shadow-intensity="0.6" exposure="1" environment-image="neutral" interaction-prompt="none"></model-viewer>
+        <div class="modal-hint">Drag to rotate</div>
+      </div>
+      <div class="modal-info">   
+        <div class="modal-jp" id="modal-jp"></div>
+        <h2 id="modal-name"></h2>
+        <p id="modal-desc"></p>
+        <div class="modal-price" id="modal-price"></div>
+        <button class="buy" id="modal-buy" type="button" aria-label="Buy">
+          <img class="buy-branch" src="assets/img/ui/sakura.webp" alt="">
+          <span class="buy-jp">購入</span>
+        </button>
+        <img class="info-wave" src="assets/img/ui/wave.webp" alt="">
+      </div>
+    </div>
+  </div>
+
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="lamps" aria-hidden="true">
+      <img class="beam" src="assets/img/ui/beam.webp" alt="">
+      <div class="lamp" style="--x:28%"><i class="glow"></i><img src="assets/img/ui/chochin.webp" alt=""></div>
+      <div class="lamp" style="--x:72%"><i class="glow"></i><img src="assets/img/ui/chochin.webp" alt=""></div>
+    </div>
+    <div class="drawer-head"><h3>Cart</h3><button id="drawer-close" class="plain" type="button">Close</button></div>
+    <ul id="drawer-list"></ul>
+    <div class="drawer-foot"><span>Total</span><b id="drawer-total">$0</b></div>
+    <button class="buy pay" id="drawer-pay" type="button" aria-label="Pay">
+      <img class="buy-branch" src="assets/img/ui/sakura.webp" alt="">
+      <span class="buy-jp">支払い</span>
+    </button>
+    <button class="plain clear" id="drawer-clear" type="button">Clear</button>
+    <img class="info-wave" src="assets/img/ui/wave.webp" alt="">
+  </aside>
+
+  <script src="assets/lib/gsap.min.js"></script>
+  <script src="assets/lib/ScrollTrigger.min.js"></script>
+  <script src="js/scenes.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/stage.js"></script>
+  <script src="js/fx.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/lamps.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/sound.js"></script>
+</body>
+</html>

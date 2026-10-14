@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holm Gaming</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/gaming-hud.css">
+  <link rel="stylesheet" href="css/gaming.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+  <header class="hud" id="hud">
+    <a class="hud-logo" href="index.html" aria-label="Holm">Holm</a>
+    <nav class="hud-nav" aria-label="Main">
+      <a href="index.html">Holm</a>
+      <a href="gaming.html" aria-current="page">Gaming</a>
+      <a href="work.html">Work</a>
+      <a href="premium.html">Premium</a>
+      <a href="info.html">Info</a>
+    </nav>
+    <div class="hud-stats">
+      <div class="hud-stat" title="Coins"><i class="hud-coin"></i><b id="coin-count">&times;00</b></div>
+      <div class="hud-stat" title="Secrets"><i class="hud-secret"></i><b id="secret-count">0/2</b></div>
+    </div>
+    <div class="hud-tools">
+      <button id="sound-toggle" type="button" aria-pressed="true">Sound</button>
+      <button id="motion-toggle" type="button" aria-pressed="true">Motion</button>
+      <button id="cart-btn" type="button">Cart<b id="cart-count">0</b></button>
+      <button id="restart-btn" class="hud-restart" type="button"><span class="en">Restart</span><span class="jp">最初から</span></button>
+    </div>
+  </header>
+
+  <main id="stage" data-state="transition">
+    <div id="viewport">
+      <canvas id="game" width="480" height="270"></canvas>
+      <div id="bubbles"></div>
+      <div class="prompt" id="prompt"></div>
+      <div class="status" id="status">
+        <div class="hearts" id="hearts"><i></i><i></i><i></i></div>
+        <div class="items"><span>Items</span><b id="items-count">0/13</b></div>
+      </div>
+      <div class="objective" id="objective"></div>
+      <div class="plate" id="plate">
+        <div class="plate-title">Help the hero</div>
+        <div class="plate-keys">
+          <div class="cross">
+            <span class="k kw" data-k="up">W</span>
+            <span class="k ka" data-k="left">A</span>
+            <span class="k ks" data-k="down">S</span>
+            <span class="k kd" data-k="right">D</span>
+          </div>
+          <div class="space"><span class="k kspace" data-k="jump">Space</span><em>jump / use</em></div>
+        </div>
+        <div class="plate-sub">Arrows work too</div>
+        <div class="plate-bar"><i id="plate-bar"></i></div>
+      </div>
+      <div class="keys-ind" id="keys-ind"><span>W</span><span>A</span><span>S</span><span>D</span></div>
+      <div class="title-card" id="title-card"><b id="tc-num"></b><strong id="tc-name"></strong><em id="tc-jp"></em></div>
+      <div class="toast" id="toast"></div>
+    </div>
+    <a class="about" href="info.html#about">About this project</a>
+  </main>
+
+  <section class="title-screen" id="title-screen">
+    <div class="ts-box">
+      <div class="ts-jp">ゲーム</div>
+      <h1>HOLM<br>GAMING</h1>
+      <p class="ts-sub">A pixel adventure across seven worlds</p>
+      <button id="start-btn" type="button">Press Space to start</button>
+      <p class="ts-keys">Move: W A S D or arrows &nbsp; Jump / use: Space</p>
+      <p class="ts-demo">Demo project. Nothing is for sale, no real orders.</p>
+    </div>
+  </section>
+
+  <div class="modal" id="reward-modal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-view">
+        <model-viewer id="reward-model" camera-controls auto-rotate rotation-per-second="24deg" shadow-intensity="0.7" exposure="1" environment-image="neutral" interaction-prompt="none"></model-viewer>
+        <canvas id="reward-icon" width="48" height="48"></canvas>
+        <div class="modal-hint">Drag to rotate</div>
+      </div>
+      <div class="modal-info">
+        <div class="found">New item found!</div>
+        <div class="modal-jp" id="reward-jp"></div>
+        <h2 id="reward-name"></h2>
+        <p id="reward-desc"></p>
+        <div class="modal-price" id="reward-price"></div>
+        <p class="demo">Demo project. Nothing is for sale, no real orders.</p>
+        <div class="modal-btns">
+          <button id="reward-add" type="button">Add to cart</button>
+          <button id="reward-close" type="button" class="primary">Keep playing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head"><h3>Cart</h3><button id="drawer-close" type="button">Close</button></div>
+    <ul id="drawer-list"></ul>
+    <div class="drawer-foot"><span>Total</span><b id="drawer-total">$0</b></div>
+    <p class="demo">Demo project. Nothing is for sale, no real orders.</p>
+    <button class="pay" id="drawer-pay" type="button">Pay</button>
+    <button class="clear" id="drawer-clear" type="button">Clear</button>
+  </aside>
+
+  <section class="end" id="end">
+    <div class="end-box">
+      <div class="end-jp">ありがとう!</div>
+      <h2>The End</h2>
+      <p class="end-sub" id="end-sub"></p>
+      <ul id="end-list"></ul>
+      <p class="demo">Demo project. Nothing is for sale, no real orders.</p>
+      <div class="modal-btns">
+        <button id="end-add" type="button">Add all to cart</button>
+        <button id="end-again" type="button" class="primary">Play again</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/nav.js"></script>
+  <script src="js/game/core.js"></script>
+  <script src="js/game/sprites-config.js"></script>
+  <script src="js/game/art.js"></script>
+  <script src="js/game/art2.js"></script>
+  <script src="js/game/rewards.js"></script>
+  <script src="js/game/ui.js"></script>
+  <script src="js/game/platformer.js"></script>
+  <script src="js/game/topdown.js"></script>
+  <script src="js/game/maze.js"></script>
+  <script src="js/game/levels.js"></script>
+  <script src="js/game/main.js"></script>
+</body>
+</html>
